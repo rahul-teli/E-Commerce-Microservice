@@ -1,11 +1,16 @@
 package com.productservice.controllers;
 
 import com.productservice.dtos.ProductDto;
+import com.productservice.models.Product;
+import com.productservice.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/products")
 public class ProductController {
+    @Autowired  
+    ProductService productService;
 
     @GetMapping
     public String getAllProducts() {
@@ -14,9 +19,8 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public String getProductById(@PathVariable long productId) {
-        // Logic to retrieve a product by its ID
-        return "Product details for ID: " + productId;
+    public Product getProductById(@PathVariable long productId) {
+        return productService.getProductById(productId);
     }
 
     @PostMapping

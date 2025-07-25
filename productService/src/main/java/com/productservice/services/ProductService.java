@@ -1,19 +1,22 @@
 package com.productservice.services;
 
 import com.productservice.dtos.ProductDto;
+import com.productservice.models.Product;
+
+import java.util.List;
 
 public interface ProductService {
 
-    public String getAllProducts();
+    public List<Product> getAllProducts();
 
 
-    public String getProductById( long productId) ;
+    public Product getProductById( long productId) ;
 
 
-    public String addNewProduct( ProductDto productDto) ;
+    public Product addNewProduct( Product product) ;
 
-    public String updateProduct(String productId, String updatedDetails);
+    public Product updateProduct(Long productId, Product product) ;
 
-    public String deleteProduct(String productId) ;
+    public boolean deleteProduct(Long productId) ;
 
 }
